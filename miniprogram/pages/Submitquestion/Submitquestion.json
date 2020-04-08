@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-nav-bar": "vant-weapp/nav-bar",
+    "van-cell": "vant-weapp/cell/index",
+    "van-button": "vant-weapp/button/index"
+  },
+    "navigationBarTitleText": "觉浅"
+}

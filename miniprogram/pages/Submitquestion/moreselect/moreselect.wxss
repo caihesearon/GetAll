@@ -1,0 +1,11 @@
+.value-class {
+  flex: none !important;
+}
+.quit{
+  margin-top: 100rpx
+}
+.van-cell{
+  margin-bottom: 3rpx;
+  height: 110rpx;
+  
+}

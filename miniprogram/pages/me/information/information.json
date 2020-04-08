@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-field": "vant-weapp/field"
+  },
+  "navigationBarTitleText": "完善信息"
+}

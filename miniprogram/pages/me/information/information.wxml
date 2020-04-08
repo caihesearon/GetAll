@@ -1,0 +1,36 @@
+<form bindsubmit="formSubmit">
+  <!-- 学校信息 -->
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" bindcancel="bindCancel" class="pickbox">
+    <view class="picker">
+      学 校：{{school}}
+    </view>
+  </picker>
+  <!-- 学院信息 -->
+  <picker bindchange="bindPickerChange1" value="{{index1}}" range="{{array1}}" bindcancel="bindCancel" class="pickbox">
+    <view class="picker1">
+      学 院：{{institute}}
+    </view>
+  </picker>
+
+  <van-cell-group>
+    <!-- 微信号或者手机号 -->
+    <view class="id">
+      <van-field class='van-field' value='{{phoneId}}' placeholder="输入手机号码或者微信号" label="号 码:" size="large" left-icon="phone-o" center='{{true}}' bind:blur='losephoneId' />
+    </view>
+    <!-- 学号 -->
+    <view class="id">
+      <van-field class='van-field' value='{{sId}}' placeholder="输入学号" label="学 号:" size="large" left-icon="contact" center='{{true}}' bind:blur='loseId' />
+    </view>
+    <!-- 专业 -->
+    <van-field class='van-field' value='{{profession}}' placeholder="输入专业" label="专 业:" size="large" left-icon="contact" center='{{true}}' bind:blur='loseProfession' />
+    <!-- 姓名 -->
+    <van-field class='van-field' value='{{name}}' placeholder="输入姓名" label="姓 名:" size="large" left-icon="contact" center='{{true}}' bind:blur='loseName' />
+    <!-- 班级 -->
+    <van-field class='van-field' value='{{sclass}}' placeholder="输入班级" label="班 级:" size="large" left-icon="contact" center='{{true}}' bind:blur='loseClass' />
+  </van-cell-group>
+
+  <view class="submit">
+    <button type="primary" formType="submit" class="" bindtap="submitInfo">提 交</button>
+  </view>
+
+</form>

@@ -1,0 +1,26 @@
+<!-- 信息展示区 -->
+<block  wx:for="{{ postList }}" wx:key="{{item._id}}">
+   <view id='{{item._id}}' class="postStyle" wx:if="{{item.contentImg}}" bindtouchstart="postTouchStart" bindtouchend="postTouchEnd"  bindlongtap="postLongTap" bindtap="postTap">
+      <view class="postLeft" >
+        <view class="postText">{{item.content}}</view>
+        <van-tag plain type="success" custom-class="">{{item.category}}</van-tag>
+        <view class="clickCount">
+          <van-icon name="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/clickCount.png" />
+          <text class="clickNum">  {{item.clickCount}}</text>
+        </view>
+      </view>
+      <view class="postRight">
+        <image class="cardimage" mode="aspectFill" src="{{item.contentImg}}"></image>
+      </view>
+    </view>
+    <view id='{{item._id}}' class="postStyle" wx:elif="{{item}}" bindtouchstart="postTouchStart" bindtouchend="postTouchEnd" bindlongtap="postLongTap" bindtap="postTap">
+      <view class="postLeft" >
+        <view class="postContent">{{item.content}}</view>
+        <van-tag plain type="success" custom-class="">{{item.category}}</van-tag>
+        <view class="clickCount">
+          <van-icon name="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/clickCount.png" />
+          <text class="clickNum">  {{item.clickCount}}</text>
+        </view>
+      </view>      
+    </view>
+  </block>

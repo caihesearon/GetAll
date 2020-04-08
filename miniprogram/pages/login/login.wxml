@@ -1,0 +1,90 @@
+<view style="background-color:#f6f6f6">
+	<!-- <view wx:if="{{isHide}}">
+  <view class='header'>
+    <image src='cloud://cloud-test-tnjps.636c-cloud-test-tnjps-1300299389/image/wxlogo.png'></image>
+  </view> 
+
+  <view class='content'> 
+    <view>申请获取以下权限</view>
+    <text>获得你的公开信息(昵称，头像等)</text>
+  </view>
+
+  <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGetUserInfo">
+    授权登录
+  </button>
+</view> -->
+
+	<view wx:if="{{true}}">
+		<!-- <view>首页</view> -->
+		<!-- <button bindtap='test' type="primary">打印用户</button>
+  <button bindtap='testAdd' type="primary">添加</button>
+  <button bindtap='testGetId' type="warn">获取ID</button> -->
+		<!-- <button bindtap='testQuest' type="warn">提交问题</button> -->
+
+		<!-- 轮播图 -->
+		<swiper indicator-dots='true' indicator-active-color="#1AAD19" autoplay="true" interval="2000" circular="true" class="swiperStyle">
+			<block wx:for='{{tops}}' wx:key='{{item._id}}'>
+				<swiper-item>
+					<image src="{{item.url}}" mode="aspectFill" class="slide-image"></image>
+				</swiper-item>
+			</block>
+		</swiper>
+
+		<!-- Notice bar -->
+		<!-- <van-notice-bar left-icon="cloud://cloud-test-tnjps.636c-cloud-test-tnjps-1300299389/image/notice-icon.png" text="啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦，没了，程序员正在忙碌中。。。。。。。" backgroundColor="#ebffe0" color="#69d113" /> -->
+
+
+		<!-- 三个按钮 -->
+		<view class="Tbtn">
+			<view class="BtnBorder" bindtap="showSkill">
+				<image src="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/skill.jpg"></image>
+			</view>
+
+			<view class="BtnBorder" bindtap="showQUestion">
+				<image src="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/question.jpg"></image>
+			</view>
+
+			<view class="BtnBorder" bindtap="showMood">
+				<image src="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/mood.jpg"></image>
+			</view>
+		</view>
+
+		<view class="TbtnW">
+			<text>回答</text>
+			<text>提问</text>
+			<text>收藏</text>
+		</view>
+
+
+		<!-- 信息展示区 -->
+		<block wx:for="{{ postList }}" wx:key="{{item._id}}">
+			<view id="{{item._id}}" class="postStyle" wx:if="{{item.contentImg}}" bindtap="showDetail">
+				<view class="postLeft">
+					<view class="postText">{{item.content}}</view>
+					<van-tag plain type="success" custom-class="">{{item.category}}</van-tag>
+					<view class="clickCount">
+						<van-icon name="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/clickCount.png" />
+						<text class="clickNum"> {{item.clickCount}}</text>
+					</view>
+				</view>
+				<view class="postRight">
+					<image class="cardimage" mode="aspectFill" src="{{item.contentImg}}"></image>
+				</view>
+			</view>
+			<view id="{{item._id}}" class="postStyle" wx:else bindtap="showDetail">
+				<view class="postLeft">
+					<view class="postContent">{{item.content}}</view>
+					<van-tag plain type="success" custom-class="">{{item.category}}</van-tag>
+					<view class="clickCount">
+						<van-icon name="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/clickCount.png" />
+						<text class="clickNum"> {{item.clickCount}}</text>
+					</view>
+				</view>
+			</view>
+		</block>
+
+		<van-divider contentPosition="center" customStyle="color: gray;border-color: gray;font-size: 25rpx;">这是我的底线</van-divider>
+	</view>
+
+
+</view>

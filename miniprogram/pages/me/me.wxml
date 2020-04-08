@@ -1,0 +1,64 @@
+<view class="meHeader" >
+ 
+  <view class="meUserinfo" style="display:flex;">
+    <view wx:if="{{logined}}" >
+      <image class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></image>
+    </view>
+    <view wx:else >
+      <image class="userinfo-avatar" src="{{avatarUrl}}"></image>      
+    </view>
+    <view wx:if="{{logined}}" style="margin-top:40rpx">      
+      <text class="nickName" >{{nickName}} </text> 
+      <view style="margin-top:30rpx"></view>
+      <text class="signature">{{signature}}</text>
+      <!-- <button style="border:1px solid black" open-type="getUserInfo" bindgetuserinfo="login">点击登录</button> -->
+      
+    </view>
+    <view wx:else style="margin-top:60rpx">
+      <van-button plain type="primary" open-type="getUserInfo" bindgetuserinfo="login" >点击登录账户</van-button>
+    </view>
+  </view>
+<!-- <button bindtap="quitApp">退出</button> -->
+  <view class="box">
+      <view class="box1" bindtap="getMyPostPage">
+          <text class="num">{{myPostCount}}</text>
+          <text class="util">我的提问</text>
+      </view>
+      <view class="hr"></view>
+      <view class="box2" bindtap="getMyAnswerPage">
+          <text class="num">{{myAnswerCount}}</text>
+          <text class="util">我的回答</text>
+      </view>
+      <view class="hr"></view>
+      <view class="box3" bindtap="getMyLovePostPage">
+          <text class="num">{{myLovePageCount}}</text>
+          <text class="util">我的收藏</text> 
+      </view>
+      <view class="hr"></view>
+      <view class="box4" bindtap="myAttention">
+          <text class="num">{{myAttentionCount}}</text>
+          <text class="util">我的关注</text>
+      </view>
+  </view>
+</view>
+
+
+
+  <van-cell-group>
+    <!-- 钱包 -->
+    <view class="money">
+      <van-cell icon="paid" class='van-cell' title-class='' is-link title="钱包" link-type="navigateTo" size='large' center='{{true}}' url="moneybag/moneybag" />
+    </view>
+    <!-- 我要提问 -->
+    <van-cell icon="share" class='van-cell' title-class='' is-link title="我要提问" link-type="navigateTo" size='large' center='{{true}}' url="../Submitquestion/Submitquestion" />
+    <!-- 我的提问 -->
+    <van-cell icon="question-o" class='van-cell' title-class='' is-link title="我的提问" link-type="navigateTo" size='large' center='{{true}}' url="myPost/myPost" />
+    <!-- 我要回答 -->
+    <van-cell icon="records" class='van-cell' title-class='' is-link title="我要回答" link-type="navigateTo" size='large' center='{{true}}' url="Wantanswer/Wantanswer" />
+    <!-- 我的回答 -->
+    <van-cell icon="completed" class='van-cell' title-class='' is-link title="我的回答" link-type="navigateTo" size='large' center='{{true}}' url="Myanswer/Myanswer" />
+    <!-- 我的收藏 -->
+    <van-cell icon="star-o" class='van-cell' title-class='' is-link title="我的收藏" link-type="navigateTo" size='large' center='{{true}}' url="myLovePost/myLovePost" />
+    <!-- 完善信息 -->
+    <van-cell icon="edit" class='van-cell' is-link title-class='van-cell-title' title="完善信息" value='信息认证' link-type="navigateTo" size='large' center='{{true}}' url="information/information" />
+  </van-cell-group>

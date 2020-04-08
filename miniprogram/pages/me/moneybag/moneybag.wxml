@@ -1,0 +1,66 @@
+<view class="header">
+    <view class="text">
+        <text class="top">账户余额</text>
+        <text class="bottom">$1000.00</text>
+    </view>
+</view>
+
+<van-cell-group>
+    <!-- 充值 -->
+    <view class="money">
+      <van-cell
+        class='van-cell'
+        title-class=''
+        is-link
+        title="充值"
+        link-type="navigateTo"
+        size='large'
+        center='{{true}}'
+        url=""
+        icon="after-sale"
+        bind:click="click"
+        />
+   
+    <!-- 提现 -->
+    <van-cell
+    class='van-cell'
+    title-class=''
+    is-link
+    title="提现"
+    link-type="navigateTo"
+    size='large'
+    center='{{true}}'
+    url=""
+    icon="cash-back-record"
+    bind:click="click"
+    />
+     </view>
+    <!-- 银行卡 -->
+    <view class="card">
+    <van-cell
+    class='van-cell'
+    title-class=''
+    is-link
+    title="银行卡"
+    link-type="navigateTo"
+    size='large'
+    center='{{true}}'
+    url=""
+    icon="ecard-pay"
+    bind:click="click"
+    />
+    <!-- 交易记录 -->
+    <van-cell
+    class='van-cell'
+    title-class=''
+    is-link
+    title="交易记录"
+    link-type="navigateTo"
+    size='large'
+    center='{{true}}'
+    url=""
+    icon="records"
+    bind:click="click"
+    />
+    </view>
+    </van-cell-group>

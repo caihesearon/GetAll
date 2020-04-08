@@ -1,0 +1,47 @@
+<van-tabs color="#00b26a" sticky="ture" bind:change="onChange" bind:click="toggle">
+  <van-tab title="{{titleName}}">
+    <view id="box" class="{{first_click?'show':'hide'}} {{state?'open':'close'}}" hidden="{{hiddenName}}">
+      <view id="item_list">
+        <view class="downone" id="1" hover-class="change" bindtap="slect">
+          <text>问答板块</text>
+        </view>
+        <view class="downone" id="2" hover-class="change" bindtap="slect">
+          <text>技能需求</text>
+        </view>
+        <view class="downone" id="3" hover-class="change" bindtap="slect">
+          <text>心情分享</text>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+  <van-tab title="热度"></van-tab>
+  <van-tab title="时间"></van-tab>
+</van-tabs>
+
+<view bindtap="ishidden1">
+  <block wx:for="{{ postList }}" wx:key="{{item._id}}">
+    <view id="{{item._id}}" class="postStyle" wx:if="{{item.contentImg}}" bindtap="showDetail">
+      <view class="postLeft">
+        <view class="postText">{{item.content}}</view>
+        <van-tag type="success" custom-class="">{{item.category}}</van-tag>
+        <view class="clickCount">
+          <van-icon custom-class="icon" name="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/clickCount.png" />
+          <text class="clickNum">  {{item.clickCount}}</text>
+        </view>
+      </view>
+      <view class="postRight">
+        <image class="cardimage" mode="aspectFill" src="{{item.contentImg}}"></image>
+      </view>
+    </view>
+    <view id="{{item._id}}" class="postStyle" wx:else bindtap="showDetail">
+      <view class="postLeft">
+        <view class="postContent">{{item.content}}</view>
+        <van-tag type="success" custom-class="">{{item.category}}</van-tag>
+        <view class="clickCount">
+          <van-icon custom-class="icon" name="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/clickCount.png" />
+          <text class="clickNum">  {{item.clickCount}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

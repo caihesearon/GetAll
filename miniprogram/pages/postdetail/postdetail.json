@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-divider": "vant-weapp/divider",
+    "van-icon": "vant-weapp/icon",
+    "van-button": "vant-weapp/button",
+    "van-overlay": "vant-weapp/overlay"
+  },
+  "enablePullDownRefresh": true
+}

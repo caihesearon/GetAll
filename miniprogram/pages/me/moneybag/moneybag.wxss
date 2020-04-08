@@ -1,0 +1,42 @@
+.header{
+  position: absolute;
+  height: 350rpx;
+  width: 95%;
+  background-color: #3bac6a;
+  margin-left: 20rpx;
+  border-radius:20rpx; 
+}
+
+.text{
+  position: relative;
+  top: 60rpx;
+  left: 255rpx;
+  line-height: 200rpx;
+  text-align: center;
+  width: 220rpx;
+  height: 200rpx;
+}
+
+.top{
+  font-size: 50rpx;
+  font-family: "黑体";
+  color: white;
+}
+.bottom{
+  position: relative;
+  top: -140rpx;
+  color: white;
+}
+
+.money{
+  margin-top: 370rpx;
+}
+.card{
+  margin-top: 20rpx;
+}
+
+.van-cell{
+  margin-bottom: 3rpx;
+  height: 110rpx;
+  
+}

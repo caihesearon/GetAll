@@ -1,0 +1,123 @@
+.content {
+  display: flex;
+  flex-direction: row;
+  font-family: "Microsoft YaHei"
+}
+.left {
+  width: 20%;
+  font-size: 25rpx;
+  height: 200rpx;
+  background-color: #F4F4F4;
+}
+.left view {
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.select {
+  background-color: #ffffff;
+  border-left: 2px solid #36AE66;
+  font-weight: bold;
+  color: #36AE66;
+}
+.normal {
+  background-color: #F4F4F4;
+  border-bottom: 1px solid #f2f2f2;
+}
+.right {
+  width: 70%;
+  /* border: 1px solid rebeccapurple */
+}
+.showcards{
+  height: 220rpx;
+  width: 65%;
+
+}
+.showcards .title{
+  font-size: 30rpx;
+  padding: 20rpx 30rpx 0 20rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.cardleft{
+  float: left;
+  width: 70%;
+}
+.showcards .cardimage{
+  height: 200rpx;
+  width: 200rpx;
+  padding: 10rpx 10rpx 0 0;
+  float: right
+}
+.showcards .tag{
+  position: relative;
+  top: 70rpx;
+  left: 20rpx;
+}
+
+
+/* 评论 */
+.right{
+  width: 80%;
+}
+.commit-grounp{
+  display: flex;
+  justify-content: flex-start;
+  padding: 10rpx;
+  background-color: #ffffff;
+  margin-bottom: 15rpx;
+}
+.commit-grounp .left-commit{
+  width: 20%;
+  margin-right: 5rpx;
+}
+.right-commit{
+  width: 90%;
+}
+.comment-group .right-comment{
+  flex: 1
+}
+.username{
+  font-size: 30rpx;
+}
+.date{
+  font-size: 20rpx;
+  color: darkgray;
+}
+.content{
+  font-size: 32rpx;
+  color:#353535;
+  /* margin-top: 10rpx */
+}
+.good-job{
+  display: flex;
+  justify-content: space-between;
+}
+.good-text{
+  font-size:26rpx;
+  color:#353535;
+  margin-top: 5rpx;
+}
+.sendName{
+  font-size: 28rpx;
+  width: 20%;
+}
+.senddate{
+  font-size: 22rpx;
+  color: green
+}
+.right-top{
+  height: 45rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.commitName{
+  font-size: 24rpx;
+  position: relative;
+  top: 28rpx;
+}

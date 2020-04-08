@@ -1,0 +1,8 @@
+.postStyle{
+  /* border: 1rpx solid red; */
+  background-color:white;
+  padding-top: 10rpx;
+  margin-bottom: 10rpx;
+  height: 200rpx;
+  width: 750rpx; 
+}

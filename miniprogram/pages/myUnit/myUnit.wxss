@@ -1,0 +1,113 @@
+.header{
+  height: 180rpx;
+  width: 90%;
+  border: 2px solid rebeccapurple;
+  margin-bottom: 20rpx; 
+  border-radius: 40rpx; 
+}
+.date{
+  font-size: 24rpx;
+  color:darkgray;
+  padding: 20rpx;
+}
+.text{
+  /* border: 1px solid red; */
+  display: flex;
+  flex-wrap: wrap-reverse;
+  font-size: 40rpx;
+  font-family: "宋体";
+  font-weight: bolder;
+  margin-left: 20rpx;
+}
+
+.top{
+  height: 200rpx;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  position: relative;
+  top: 20rpx;
+  bottom: 20rpx;
+}
+
+.top-box1{
+  background-color: #33bfd1;
+}
+.top-box1 image,.top-box2 image{
+  height: 90rpx;
+  width: 90rpx;
+  position: absolute;
+  z-index: 999;
+  margin-left: 20rpx;
+}
+.top-box1 text,.top-box2 text{
+  font-size:36rpx;
+  font-weight: bolder;
+  color: white;
+  position: relative;
+  top: 120rpx;
+}
+.top-box2{
+  background-color: #3d6eff;
+}
+.top-box1,.top-box2{
+  width: 45%;
+  height: 200rpx;
+  /* border: 1px solid gold; */
+  border-radius: 40rpx;
+  text-align: center; 
+}
+
+.bottom-box1,.bottom-box2,.bottom-box3,.bottom-box4,.bottom-box5,.bottom-box6{
+  height: 150rpx;
+  width: 90%;
+  /* border: 1px solid greenyellow; */
+  margin: 0 auto;
+}
+.bottom-box1,.bottom-box2,.bottom-box3,.bottom-box4,.bottom-box5,.bottom-box6{
+  border-radius: 40rpx; 
+  margin-top: 20rpx; 
+}
+.bottom-box1{
+  margin-top: 50rpx;
+}
+.header,.top,.bottom{
+  margin: 0 auto;
+}
+
+.bottom-box1{
+  background-color:#FFC0CB;
+}
+.bottom-box2{
+  background-color: #ffc444;
+}
+.bottom-box3{
+  background-color: #48D1CC;
+}
+.bottom-box4{
+  background-color: #32CD32;
+}
+.bottom-box1 .title,.bottom-box2 .title,.bottom-box3 .title,.bottom-box4 .title{
+  font-size:36rpx;
+  font-weight: bolder;
+  color: white;
+  position: relative;
+  left: 25%;
+  top: -50rpx;
+}
+.bottom-box1 .detail,.bottom-box2 .detail,.bottom-box3 .detail,.bottom-box4 .detail{
+  font-size:26rpx;
+  color: white;
+  display: block;
+  position: relative;
+  left: 35%;
+  top: -40rpx;
+}
+.bottom-box1 image,.bottom-box2 image,.bottom-box3 image,.bottom-box4 image{
+  height: 100rpx;
+  width: 100rpx;
+  position: relative;
+  left: 20rpx;
+  top: 20rpx;
+}

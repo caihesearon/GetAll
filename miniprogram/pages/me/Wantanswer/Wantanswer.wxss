@@ -1,0 +1,113 @@
+#box{
+ position: fixed;
+ width: 100%;
+ overflow: hidden;
+ /* height: 0; */
+ animation-fill-mode: forwards;
+}
+#item_list{
+  background-color: white;
+  width: 100%;
+  /* z-index: 999; */
+}
+.downone,.downtwo,.downthree{
+  height: 85rpx;
+  width: 100%;
+  line-height: 85rpx;
+ 
+}
+.downone text,.downtwo text{
+  padding-left: 60rpx;
+  font-size: 26rpx;
+}
+@keyframes slidedown{
+  from {
+    height: 0;
+  }
+  to {
+    height: 270rpx; /* 每次加90rpx*/
+  }
+}
+@keyframes slideup{
+  from {
+    height: 270rpx;
+  }
+  to {
+    height: 0;
+  }
+}
+.open{
+  animation: slidedown 0.6s;
+}
+.close{
+  animation: slideup 0.6s; 
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+.change{
+  background-color: #f6f6f6;
+}
+
+/* .postStyle{
+  background-color:white;
+  padding-top: 10rpx;
+  margin-bottom: 10rpx;
+  height: 200rpx;
+  width: 750rpx; 
+}
+.postLeft{
+  padding-left: 20rpx;
+  float: left;
+  height: 200rpx;
+  width: 480rpx;
+}
+.postRight{
+  float: right;
+  margin-right: 15rpx;
+  width: 215rpx;
+  height: 190rpx;
+}
+.cardimage{
+  border-radius: 5%;
+  width: 215rpx;
+  height: 190rpx;
+}
+.postText{
+  font-size: 30rpx;
+  height: 85rpx;
+  width: 500rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+}
+.postContent{
+  font-size: 30rpx;
+  height: 85rpx;
+  width: 700rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+}
+.clickCount{
+  margin-top: 20rpx;
+  width: 150rpx;
+}
+.clickNum{
+  font-size: 28rpx;
+  color: gray;
+} */

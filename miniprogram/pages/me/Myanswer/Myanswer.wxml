@@ -1,0 +1,33 @@
+<view class="content">
+  <view class='left'>
+    <view class="{{flag==0?'select':'normal'}}" id='0' bindtap='switchNav'>技能需求</view>
+    <view class="{{flag==1?'select':'normal'}}" id='1' bindtap='switchNav'>问答板块</view>
+    <view class="{{flag==2?'select':'normal'}}" id='2' bindtap='switchNav'>心情分享</view>
+  </view>
+  <view class='right'>
+    <block wx:for="{{allInfo}}" wx:key="this">
+      <view class="commit-grounp" id="{{userPostName[index]._id}}" bindtap="enter">
+        <view class="left-commit">
+          <text class="sendName">发表人:</text>
+          <text class="commitName">评论内容:</text>
+        </view>
+        <view class="right-commit">
+          <view class="right-top">
+            <view class="username">{{userPostName[index].nickName}}</view>
+            <view class="good-job" catchtap="givegood" wx:for-index="index" data-index="{{index}}">
+              <van-icon name="good-job-o" size="20" />
+              <view class="good-text">{{item.loveCount}}</view>
+            </view>
+          </view>
+          <view class="date">
+            <text class="senddate">发表于:</text>{{userPostName[index].timestamp}}</view>
+          <view class="content">
+            {{item.commentText}}
+          </view>
+          <view class="date">
+            <text class="senddate">评论于:</text>{{item.timestamp}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

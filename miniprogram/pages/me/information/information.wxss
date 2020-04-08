@@ -1,0 +1,22 @@
+.picker,.picker1
+{
+  margin-left: 45rpx;
+  color: grey 
+}
+.pickbox{
+  margin-top: 25rpx;
+  height: 110rpx;
+  width: 100%;
+  line-height: 110rpx;
+  background-color: white
+}
+.van-field{
+  height: 110rpx;
+  margin-top: 25rpx
+}
+.id{
+  margin-top: 25rpx
+}
+.submit{
+  margin-top: 75rpx
+}

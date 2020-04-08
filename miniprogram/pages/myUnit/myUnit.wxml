@@ -1,0 +1,40 @@
+<view class="header">
+    <view class="date">{{pagedate}}</view>
+    <view class="text"><text>{{talk[n]}}</text></view>
+</view>
+<view class="featuresBox">
+    <view class="top">
+        <view class="top-box1" bindtap="addPost">
+           <image src=""></image> 
+           <text>我要提问</text>        
+        </view>
+        <view class="top-box2" bindtap="wantAnswer">
+            <image src=""></image>
+            <text>我要回答</text>
+        </view>
+    </view>
+    <view class="bottom">
+        <view class="bottom-box1" bindtap="enterMyLove">
+            <image src=""></image>
+            <text class="title">我的收藏</text>
+            <text class="detail">我喜欢的都在这儿</text>
+        </view>
+        <view class="bottom-box2" bindtap="myAnswer">
+            <image src=""></image>
+            <text class="title">我的回答</text>
+            <text class="detail">我可真厉害，我是最胖的</text>           
+        </view>
+        <view class="bottom-box3" bindtap="myQuestion">
+            <image src=""></image>
+            <text class="title">我的问题</text>
+            <text class="detail">我怎么什么都不会，我是废物~</text>  
+        </view>
+        <view class="bottom-box4">
+            <image src=""></image>
+            <text class="title">问题榜单</text>
+            <text class="detail">大家都在围观的，我也要去--</text>  
+        </view>
+        <!-- <view class="bottom-box5"></view>      两个栏目框，提供以后添加功能 -->
+        <!-- <view class="bottom-box6"></view> -->
+    </view>
+</view>
