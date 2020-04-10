@@ -50,8 +50,10 @@ Page({
       //修改 fileId
       value.img = app.globalData.fileID
     }
+    console.log(app.globalData)
+
     //获取所有的信息后需要加入数据库中
-    // console.log(value)
+     console.log(value)
     //获取本地的用户信息
     const uInfo = wx.getStorageSync('userInfo')
     //获取用户头像

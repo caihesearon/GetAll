@@ -1,5 +1,6 @@
 /**
  * 添加用户评论
+ * 配合ContentCheck云函数检查评论是否违规
  */
 const cloud = require('wx-server-sdk')
 

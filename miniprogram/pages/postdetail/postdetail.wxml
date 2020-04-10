@@ -1,3 +1,4 @@
+<van-dialog id="van-dialog" />
 <view class="head"> 
   <view class="user">
     <image class="usericon" src="{{postInfo.avatarUrl}}" mode="aspectFill"></image>
