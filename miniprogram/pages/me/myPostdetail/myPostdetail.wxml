@@ -1,68 +1,76 @@
 <view class="head">
-  <view class="user">
-    <image class="usericon" src="{{postInfo.avatarUrl}}" mode="aspectFill"></image>
-    <view class="marstname">{{postInfo.nickName}}
-      <text class="date">{{postCreateTime}}</text>
-    </view>
+	<view class="user">
+		<image class="usericon" src="{{postInfo.avatarUrl}}" mode="aspectFill"></image>
+		<view class="marstname">{{postInfo.nickName}}
+			<text class="date">{{postCreateTime}}</text>
+		</view>
+	</view>
 
-  </view>
-  <view class="postContent">
-    <text>{{postInfo.content}}</text>
-  </view>
-  <image data-src="{{postInfo.contentImg}}" wx:if="{{postInfo.contentImg}}" mode="aspectFill" src="{{postInfo.contentImg}}" class="title-image" bindtap="clickImg"></image>
+	<view class="contentBr"></view>
+		<text space="ensp"> {{postInfo.content}}</text>
+	<view class="contentBr"></view>
+	<!-- <image data-src="{{postInfo.contentImg}}" wx:if="{{postInfo.contentImg}}" mode="aspectFill" src="{{postInfo.contentImg}}" class="title-image" bindtap="clickImg"></image> -->
+  <view>
+		<image data-index="{{0}}" wx:if="{{postInfo.contentImg}}" mode="aspectFill" src="{{postInfo.contentImg}}" class="title-image" bindtap="clickImg"></image>
+	</view>
+	<!-- 多图片展示 -->
+	<view wx:if="{{postInfo.contentsImg}}">
+		<image wx:if="{{postInfo.contentsImg.length == 1}}" src="{{postInfo.contentsImg[0]}}" mode="aspectFill" class="title-image" data-index="{{index}}" bindtap="clickImg"></image>
+		<image wx:if="{{postInfo.contentsImg.length > 1}}" wx:for="{{postInfo.contentsImg}}" src="{{item}}" mode="aspectFill" class="mul-image" data-index="{{index}}" bindtap="clickImg"></image>
+	</view>
 
-  <view class="headicon">
-    <!-- 点赞 -->
-    <view>
-      <van-icon custom-class="icon1" name="{{problemicon}}" size="25" bind:click="giveproblem" />
-      <text class="number">{{postInfo.loveCount}}</text>
-    </view>
-    <!-- 评论 -->
-    <view>
-      <van-icon custom-class="icon2" name="chat-o" size="25" bind:click="givecontent" />
-      <text class="number">{{commentTotal}}</text>
-    </view>
-    <!-- 收藏 -->
-    <view>
-      <van-icon custom-class="icon3" name="{{love}}" size="25" bind:click="givestar" />
-    </view>
-  </view>
+	<view class="headicon">
+		<!-- 点赞 -->
+		<view>
+			<van-icon custom-class="icon1" name="{{problemicon}}" size="25" bind:click="giveproblem" />
+			<text class="number">{{postInfo.loveCount}}</text>
+		</view>
+		<!-- 评论 -->
+		<view>
+			<van-icon custom-class="icon2" name="chat-o" size="25" bind:click="givecontent" />
+			<text class="number">{{commentTotal}}</text>
+		</view>
+		<!-- 收藏 -->
+		<view>
+			<van-icon custom-class="icon3" name="{{love}}" size="25" bind:click="givestar" />
+		</view>
+	</view>
 </view>
 
 <!-- 分割线 -->
 <van-divider contentPosition="center" customStyle="height: 30rpx;font-size: 20rpx;" class="divider">评论区</van-divider>
 <!-- 评论 -->
 <block wx:for="{{comments}}" wx:key="item._id">
-  <view class="commit-grounp">
-    <view class="left-commit">
-      <image class="avatar" src="{{item.avatarUrl}}"></image>
-    </view>
-    <view class="right-commit">
-      <view class="commentTop">
-        <text class="username">{{item.nickName}}</text>
-        <view class="Commentlove">
-          <!-- <van-icon wx:if="{{item.isLove}}" id="{{item._id}}" data-index="{{index}}" name="good-job" size="22" bind:click="commentLove" />
+	<view class="commit-grounp">
+		<view class="left-commit">
+			<image class="avatar" src="{{item.avatarUrl}}"></image>
+		</view>
+		<view class="right-commit">
+			<view class="commentTop">
+				<text class="username">{{item.nickName}}</text>
+				<view class="Commentlove">
+					<!-- <van-icon wx:if="{{item.isLove}}" id="{{item._id}}" data-index="{{index}}" name="good-job" size="22" bind:click="commentLove" />
            <van-icon wx:else id="{{item._id}}" data-index="{{index}}" name="good-job-o" size="22" bind:click="commentLove" /> -->
-          <view class="btnbox">
-             <van-button id='{{item._id}}' color="linear-gradient(to right, #4dc56d, #48b648)" size="mini" custom-class="" bind:click="getphoneid" >联系用户</van-button>
-          </view>
-        </view>
-        <view class="date">{{item.timestamp}}</view>
-      </view>
-      <view class="content">
-        {{item.commentText}}
-      </view>
-    </view>
-  </view>
+					<view class="btnbox">
+						<van-button id='{{item._id}}' color="linear-gradient(to right, #4dc56d, #48b648)" size="mini" custom-class="" bind:click="getphoneid">联系用户</van-button>
+					</view>
+				</view>
+				<view class="date">{{item.timestamp}}</view>
+			</view>
+			<view class="content">
+				{{item.commentText}}
+			</view>
+		</view>
+	</view>
 </block>
 
 
 <!-- 评论框 ***********-->
 <form bindsubmit="submitComment" style="margin-top:70rpx">
-  <view catchtap="closeCommentBox" catchtouchmove="move" class="sumbitcontent">
-    <view class="release">
-      <textarea name="commentText" focus="{{isfocus}}" autoHeight="true" bindblur="" bindinput="" catchtap="" class="text" cursorSpacing="20" fixed="true" placeholder="{{tex}}" placeholderClass="input_null" showConfirmBar="" value="{{commentContent}}"></textarea>
-      <button type="primary" form-type="submit" class="submit">发 表</button>
-    </view>
-  </view>
+	<view catchtap="closeCommentBox" catchtouchmove="move" class="sumbitcontent">
+		<view class="release">
+			<textarea name="commentText" focus="{{isfocus}}" autoHeight="true" bindblur="" bindinput="" catchtap="" class="text" cursorSpacing="20" fixed="true" placeholder="{{tex}}" placeholderClass="input_null" showConfirmBar="" value="{{commentContent}}"></textarea>
+			<button type="primary" form-type="submit" class="submit">发 表</button>
+		</view>
+	</view>
 </form>

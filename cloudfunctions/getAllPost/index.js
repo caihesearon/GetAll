@@ -13,10 +13,10 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   // const { currPage, pageCount} = event
-
+  const {currPage} = event
   return await db.collection('userPost')
-    .orderBy('clickCount', 'desc')
-    .get()
+    .orderBy('clickCount', 'desc')    
+    .get()    
     // .skip(currPage * pageCount)
     // .limit(pageCount)
 }

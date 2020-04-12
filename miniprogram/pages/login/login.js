@@ -46,6 +46,7 @@ Page({
       // wx.hideTabBar({
       // })
     }
+    
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -65,8 +66,8 @@ Page({
   },
   //获取的post列表
   getPostList(isInit) {
-    //每次刷新显示的个数
-    const pageCount = 5
+    //每次刷新显示的个数 5
+    const pageCount = 1
     //当前页码
     const currPage = this.page
     wx.showLoading({
@@ -90,87 +91,21 @@ Page({
           postList: this.data.postList.concat(res.result.data)
         })
       }
+      // console.log(this.data.postList)
       wx.hideLoading()
       // console.log(res)
     }).catch(err => {
       console.log(res)
     })
-  },
-  onGetUserInfo(e) {
-    //调用云函数login获取用户的信息
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        //如果用户同意了授权
-        //设置当前的页码
-        this.page = 0
-        //第一次获取post
-        this.getPostList(true)
-        //显示下方Tabbar
-        // wx.showTabBar({
-        //   animation: true,
-        // })
-        if (e.detail.userInfo) {
-          e.detail.userInfo.openid = res.result.wxInfo.OPENID
-          //设置isHide显示首页
-          // this.setData({
-          //   isHide: false
-          // })
-          //将用户的信息存入本地
-          wx.setStorageSync('userInfo', e.detail.userInfo)
-          //将用户的信息存入数据库
-          const user = e.detail.userInfo
-          //需要判断数据库中是否存在该用户
-          db.collection('user').get().then(res => {
-            //如果用户不存在 -- 防止用户重复加入数据库
-            // console.log(res.data[0]==null)
-            if (res.data[0] == null) {
-              db.collection('user').add({
-                data: {
-                  avatarUrl: user.avatarUrl, //头像
-                  city: user.city, //城市
-                  province: user.province, //省份
-                  country: user.country, //国家
-                  gender: user.gender, //性别
-                  nickName: user.nickName, //昵称
-                  school: '', //学校
-                  college: '', //学院
-                  sId: '', //学号
-                  profession: '', //专业
-                  name: '', //姓名
-                  sclass: '', //班级
-                  // lovePosts:[]  //我收藏的帖子
-                },
-                success: res => {
-                  // console.log(res)
-                }
-              })
-            }
-          })
-          //如果用户拒绝了授权
-        } else {
-          //用户按了拒绝按钮
-          wx.showModal({
-            title: '警告',
-            content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
-            showCancel: false,
-            confirmText: '返回授权',
-            success: function(res) {
-              // 用户没有授权成功，不需要改变 isHide 的值
-              if (res.confirm) {
-                console.log('用户点击了“返回授权”');
-              }
-            }
-          })
-        }
-      }
-    })
-  },
+  }, 
   //用户点击了详情 -- 需要为这个文章增加一个点击量
-  showDetail(e){
+  showDetail(e){    
+    //页面中拼接了id号和在postList中的下标号
     //获取当前帖子的 _id
-    const id = e.currentTarget.id
+    let str = e.currentTarget.id
+    str = str.split('+')    
+    const id = str[0]
+    const index = str[1]
     //根据 _id 为当前帖子增加一个点击量
     wx.cloud.callFunction({
       name:'incClickCount',
@@ -178,15 +113,9 @@ Page({
         postId:id
       }
     })
-    //根据id从postList中获取帖子的全部信息
+    //根据index从postList中获取帖子的全部信息
     var arr = this.data.postList
-    var index = -1
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i]._id == id) {
-        arr[i].clickCount += 1
-        index = i
-      }
-    }
+    arr[index].clickCount += 1    
     this.setData({
       postList: arr
     })
@@ -221,7 +150,77 @@ Page({
 
 
 
-
+ // onGetUserInfo(e) {
+  //   //调用云函数login获取用户的信息
+  //   wx.cloud.callFunction({
+  //     name: 'login',
+  //     data: {},
+  //     success: res => {
+  //       //如果用户同意了授权
+  //       //设置当前的页码
+  //       this.page = 0
+  //       //第一次获取post
+  //       this.getPostList(true)
+  //       //显示下方Tabbar
+  //       // wx.showTabBar({
+  //       //   animation: true,
+  //       // })
+  //       if (e.detail.userInfo) {
+  //         e.detail.userInfo.openid = res.result.wxInfo.OPENID
+  //         //设置isHide显示首页
+  //         // this.setData({
+  //         //   isHide: false
+  //         // })
+  //         //将用户的信息存入本地
+  //         wx.setStorageSync('userInfo', e.detail.userInfo)
+  //         //将用户的信息存入数据库
+  //         const user = e.detail.userInfo
+  //         //需要判断数据库中是否存在该用户
+  //         db.collection('user').get().then(res => {
+  //           //如果用户不存在 -- 防止用户重复加入数据库
+  //           // console.log(res.data[0]==null)
+  //           if (res.data[0] == null) {
+  //             db.collection('user').add({
+  //               data: {
+  //                 avatarUrl: user.avatarUrl, //头像
+  //                 city: user.city, //城市
+  //                 province: user.province, //省份
+  //                 country: user.country, //国家
+  //                 gender: user.gender, //性别
+  //                 nickName: user.nickName, //昵称
+  //                 school: '', //学校
+  //                 college: '', //学院
+  //                 sId: '', //学号
+  //                 profession: '', //专业
+  //                 name: '', //姓名
+  //                 sclass: '', //班级
+  //                 // lovePosts:[]  //我收藏的帖子
+  //               },
+  //               success: res => {
+  //                 // console.log(res)
+  //               }
+  //             })
+  //           }
+  //         })
+  //         //如果用户拒绝了授权
+  //       } else {
+  //         //用户按了拒绝按钮
+  //         wx.showModal({
+  //           title: '警告',
+  //           content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
+  //           showCancel: false,
+  //           confirmText: '返回授权',
+  //           success: function(res) {
+  //             // 用户没有授权成功，不需要改变 isHide 的值
+  //             if (res.confirm) {
+  //               console.log('用户点击了“返回授权”');
+  //             }
+  //           }
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
   testGetId() {
     wx.cloud.callFunction({
       name: 'Test'

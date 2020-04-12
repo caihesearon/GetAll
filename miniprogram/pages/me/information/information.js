@@ -1,4 +1,4 @@
-import Notify from 'vant-weapp/notify/notify';
+import Notify from '@vant/weapp/notify/notify';
 const db = wx.cloud.database()
 const app = getApp()
 Page({

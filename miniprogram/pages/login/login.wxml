@@ -54,11 +54,9 @@
 			<text>提问</text>
 			<text>收藏</text>
 		</view>
-
-
 		<!-- 信息展示区 -->
-		<block wx:for="{{ postList }}" wx:key="{{item._id}}">
-			<view id="{{item._id}}" class="postStyle" wx:if="{{item.contentImg}}" bindtap="showDetail">
+		<block wx:for="{{ postList }}" wx:key="{{item._id}}">		 			
+			<view id="{{item._id}}+{{index}}" class="postStyle" wx:if="{{item.contentsImg[0] || item.contentImg}}" bindtap="showDetail">
 				<view class="postLeft">
 					<view class="postText">{{item.content}}</view>
 					<van-tag plain type="success" custom-class="">{{item.category}}</van-tag>
@@ -66,14 +64,20 @@
 						<van-icon name="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/clickCount.png" />
 						<text class="clickNum"> {{item.clickCount}}</text>
 					</view>
-				</view>
-				<view class="postRight">
+				</view>				
+				<view wx:if="{{item.contentImg}}" class="postRight">		
+					<!-- 为了解决上一个版本的contentImg只有一个图片的问题 -->
 					<image class="cardimage" mode="aspectFill" src="{{item.contentImg}}"></image>
+				</view>				
+				<view wx:if="{{item.contentsImg[0]}}" class="postRight">												
+					<image class="cardimage" mode="aspectFill" src="{{item.contentsImg[0]}}"></image>
 				</view>
+												
 			</view>
-			<view id="{{item._id}}" class="postStyle" wx:else bindtap="showDetail">
+			<view id="{{item._id}}+{{index}}" class="postStyle" wx:else bindtap="showDetail">					
+				
+					<view class="postContent"> {{item.content}}</view>
 				<view class="postLeft">
-					<view class="postContent">{{item.content}}</view>
 					<van-tag plain type="success" custom-class="">{{item.category}}</van-tag>
 					<view class="clickCount">
 						<van-icon name="cloud://cloud-test-tnjps.636c-cloud-test-tnjps/image/clickCount.png" />

@@ -38,7 +38,7 @@ exports.main = async (event, context) => {
     return {
       //因为违规返回的时候没有msgR 所以只返回errCode 方便判断
       msgErrCode:msgR.errCode,
-      imgR
+      imgErrCode:imgR.errCode
     }
   }catch(e){
     return e

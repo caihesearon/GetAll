@@ -1,5 +1,10 @@
+<!-- <image src="cloud://cloud-test-tnjps.636c-cloud-test-tnjps-1300299389/userUploadImage/could-img-1586687988664wxfile.jpg"></image>
+<image src="cloud://cloud-test-tnjps.636c-cloud-test-tnjps-1300299389/userUploadImage/could-img-1586687988674wxfile.jpg"></image>
+<image src="cloud://cloud-test-tnjps.636c-cloud-test-tnjps-1300299389/userUploadImage/could-img-1586687988683wxfile.jpg"></image> -->
+
+
+
 <view class="meHeader" >
- 
   <view class="meUserinfo" style="display:flex;">
     <view wx:if="{{logined}}" >
       <image class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></image>
@@ -7,7 +12,7 @@
     <view wx:else >
       <image class="userinfo-avatar" src="{{avatarUrl}}"></image>      
     </view>
-    <view wx:if="{{logined}}" style="margin-top:40rpx">      
+    <view wx:if="{{logined}}" style="margin-top:40rpx">
       <text class="nickName" >{{nickName}} </text> 
       <view style="margin-top:30rpx"></view>
       <text class="signature">{{signature}}</text>
@@ -42,8 +47,6 @@
   </view>
 </view>
 
-
-
   <van-cell-group>
     <!-- 钱包 -->
     <view class="money">
@@ -62,3 +65,11 @@
     <!-- 完善信息 -->
     <van-cell icon="edit" class='van-cell' is-link title-class='van-cell-title' title="完善信息" value='信息认证' link-type="navigateTo" size='large' center='{{true}}' url="information/information" />
   </van-cell-group>
+<!-- <van-uploader
+      name="2"
+      file-list="{{ fileList2 }}"
+      multiple
+      bind:after-read="afterRead"
+      bind:delete="delete"
+      bind:click-preview="clickPreview"
+    /> -->

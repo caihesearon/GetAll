@@ -1,10 +1,10 @@
 {
   "usingComponents": {
-    "van-notice-bar": "vant-weapp/notice-bar",
-    "van-tag": "vant-weapp/tag",
-    "van-button": "vant-weapp/button",
-    "van-icon": "vant-weapp/icon",
-    "van-divider": "vant-weapp/divider/index"
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-tag": "@vant/weapp/tag",
+    "van-button": "@vant/weapp/button",
+    "van-icon": "@vant/weapp/icon",
+    "van-divider": "@vant/weapp/divider/index"    
   },
   "enablePullDownRefresh": true
 }

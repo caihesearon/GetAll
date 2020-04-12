@@ -3,12 +3,15 @@
   width: 240rpx;
   margin: 20rpx
 }
-.van-cell{
+/* .van-cell{ 该样式的设置就是一个巨坑 导致文本的自增失效
   margin-bottom: 3rpx;
   height: 110rpx;
-}
-.section{
-  width: 100%;
+} */
+.section{  
+  width: 92%;
+  padding: 30rpx;
   height: 300rpx;
+  margin-bottom: 20rpx;
+  background-color: white;
 }
 

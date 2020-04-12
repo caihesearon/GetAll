@@ -7,36 +7,32 @@ cloud.init({
 
 const db = cloud.database()
 
-//获取fileid
-async function getFileId(id){
-  return db.collection('userPost').doc(id)
-    .field({
-      contentImg: true
-    })
-    .get()
-}
-//根据fileId删除图片
-async function delImgByfileId(fileId){
-  const fileIDs = [fileId]
-  return cloud.deleteFile({
-    fileList: fileIDs,
-  })
-}
 
-// 云函数入口函数
+
+/**
+ * 根据传入的fileIds数组删除图片
+ * id删除帖子
+ */
 exports.main = async (event, context) => {
   //获取post的id
-  const {id} = event;
+  const {
+    fileIds
+  } = event;
+  const {
+    id
+  } = event;
   //根据id获取该post是否有fileid
-  const postInfo = await getFileId(id)
-  //获取fileid
-  const fileId = postInfo.data.contentImg  
-  //如果有图片就先删除图片
-  if(fileId != ''){
-    //根据fileid删除图片
-    const delImgResult = await delImgByfileId(fileId)
-    // status = delImgResult.fileList[0].status
+  // const postInfo = await getFileId(id)
+  //先删除数据库中的数据
+  if(id != ''){
+    await db.collection('userPost').doc(id).remove()
   }
-  //根据id删除post数据
-  return await db.collection('userPost').doc(id).remove()
+  if (fileIds.length > 0) {
+    //然后删除云存储中的图片
+    return await cloud.deleteFile({
+      fileList: fileIds
+    })
+  }
+  return 
+  
 }

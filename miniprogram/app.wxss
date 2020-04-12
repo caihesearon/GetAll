@@ -203,14 +203,18 @@ page {
   -webkit-box-orient: vertical;
 }
 .postContent{
+  /* border: 1px solid black; */
   font-size: 30rpx;
   height: 85rpx;
-  width: 700rpx;
+  width: 95%;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
   white-space: normal !important;
+  
+  padding-left: 20rpx;
+  padding-right: 20rpx;
   -webkit-line-clamp:2;
   -webkit-box-orient: vertical;
 }

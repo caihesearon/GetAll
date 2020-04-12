@@ -6,7 +6,7 @@ Page({
   data: {
     postList: [],  //帖子列表
   },
-  onShow: function (options) {
+  onLoad: function (options) {
     //进行登录拦截
     const flag = filter.identityFilter()  
     if(flag){
@@ -20,12 +20,12 @@ Page({
     wx.stopPullDownRefresh()
   },
   onReachBottom: function () {
-    this.page += 1
-    this.getMyPostList()
+    // this.page += 1
+    // this.getMyPostList()
   },
   //获取当前用户的所有post
   getMyPostList(isInit){
-    const pageCount = 6
+    const pageCount = 200
     wx.showLoading({
       title: '加载中',
     })
@@ -41,74 +41,72 @@ Page({
         }else{
           this.setData({
             postList: this.data.postList.concat(res.data)
-          })
-        }
+          })          
+        }        
       }).catch(err=>{
         console.log(err)
       })    
     wx.hideLoading()
   },
   //用户点击卡片事件
-  postTap(e){
+  postTap(e){    
     if (this.endTime - this.startTime < 350) {
+      //页面中拼接了id号和在postList中的下标号
       //获取当前帖子的 _id
-      const id = e.currentTarget.id
-      //根据id从postList中获取帖子的全部信息
+      let str = e.currentTarget.id
+      str = str.split('+')    
+      const id = str[0]
+      const index = str[1]
+      //根据index从postList中获取帖子的全部信息
       var arr = this.data.postList
-      var index = -1
-      for (var i = 0; i < arr.length; i++) {
-        if (arr[i]._id == id) {
-          index = i
-        }
-      }
-      this.setData({
-        postList: arr
-      })
       //将获取的postInfo放入全局变量中
-      app.globalData.postInfo = arr[index]
+      app.globalData.postInfo = arr[index]        
       wx.navigateTo({
         url: '../myPostdetail/myPostdetail',
-      })        
+      })                   
     }    
   },
-  //删除postList数组中的数据
-  deletePostListById(id){
-    //获取当前数据的index
-    var arr = this.data.postList
-    var index = -1
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i]._id == id) {
-        index = i
-      }
-    }
-    //将下标为第index的元素删除
-    arr.splice(index, 1, '')
-    this.setData({
-      postList: arr
-    })
-  },
+  
   //用户长按卡片事件
-  postLongTap(e){    
+  postLongTap(e){       
     wx.showModal({
       title: '提示',
       content: '确定删除',
       success:res=>{
         if(res.confirm){
+          var arr = this.data.postList
           //需要删除当前数据库中的数据和云存储中的图片
           //获取当前数据的id
-          const id = e.currentTarget.id   
-          console.log(id)       
+          let str = e.currentTarget.id.split('+')           
+          const id = str[0]
+          const index = str[1]
+          //根据index获取pageInfo
+          const pageInfo = arr[index];
+          //之所以有如下判断是因为图片的历史遗留问题
+          //整理图片 使用一个fileIds数组进行保存
+          var fileIds = []
+          if(pageInfo.contentImg && pageInfo.contentImg!=''){//如果第一版本有图片            
+            fileIds[0] = pageInfo.contentImg
+          }else if(pageInfo.contentsImg[0]){//第二版本有图片
+            fileIds = pageInfo.contentsImg
+          }else{
+            //第二版本没有图片 第一版本没有图片  都不用设置
+          }           
           //根据id来删除数据
           wx.cloud.callFunction({
             name:'deltePostById',
             data:{
-              "id":id
+              "id":id,
+              "fileIds": fileIds
             }
           }).then(res=>{
             console.log(res)
           })
-          //page里的postList也需要删除
-          this.deletePostListById(id)
+          //page里的postList也需要删除          
+          arr.splice(index, 1)
+          this.setData({
+            postList: arr
+          })          
         }else{
           console.log('取消')
         }

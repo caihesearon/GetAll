@@ -3,7 +3,7 @@ const db = wx.cloud.database()
 var util = require("../utils/common.js")
 //引入登陆拦截器
 let filter = require('../utils/filter.js');
-import Dialog from '../../vant-weapp/dialog/dialog';
+import Dialog from '../../@vant/weapp/dialog/dialog';
 Page({
   data: {
     tex: "评论一句，为前排打call !",
@@ -12,7 +12,7 @@ Page({
     postInfo: {}, //用来保存当前帖子信息
     comments: [], //用来保存当前帖子所有的评论对象
     timestamp: '', //时间戳
-    postCreateTime: '',
+    postCreateTime: '',//保存post创建的日期
     commentTotal: 0,
     problemicon: "thumb-circle-o",
     commentContent: '', //输入框中的内容
@@ -41,7 +41,7 @@ Page({
         problemicon: "thumb-circle"
       })
     }
-    //获取用户是否收藏该post    
+    //获取用户是否收藏该post
     this.isLovePost()
   },
   onPullDownRefresh: function () {
@@ -57,7 +57,7 @@ Page({
   //获取当前帖子的评论
   getCommentList(isInit) {
     //每次刷新显示的个数
-    const pageCount = 10
+    const pageCount = 30
     //当前页码
     const currPage = this.page
     //获取当前帖子的id postId
@@ -110,14 +110,24 @@ Page({
     })
   },
   //点击图片 -- 使图片有一个放大的效果
-  clickImg(e) {
-    //获取data-src
-    var src = e.currentTarget.dataset.src
-    var imgList = []
-    imgList[0] = src
-    //图片预览
+  clickImg(e) {     
+    //获取当前图片的下标
+    let {index} = e.currentTarget.dataset    
+    //根据下标获取对应的图片对象
+    let imgList = []  //保存页面中所有的图片对象
+    let img           //保存当前图片对象
+    if(this.data.postInfo.contentsImg){
+      //多个图片对象
+      imgList = this.data.postInfo.contentsImg
+      img = imgList[index]
+    }else{
+      //单个图片对象
+      imgList[0] = this.data.postInfo.contentImg
+      img = imgList[0]
+    }        
+    // //图片预览
     wx.previewImage({
-      current: src, // 当前显示图片的http链接
+      current: img, // 当前显示图片的http链接
       urls: imgList
     })
   },

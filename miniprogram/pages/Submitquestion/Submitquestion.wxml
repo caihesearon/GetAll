@@ -1,9 +1,12 @@
+
+<!-- 违规内容的弹出提醒 -->
+<van-dialog id="van-dialog" />
 <form bindsubmit="formSubmit">
-    
-    <!-- 输入文本框 -->
-    <textarea 
+	<!-- 输入文本框 -->
+	<textarea 
       name='question'
       class="section"
+      maxlength="{{maxlength}}"
       show-confirm-bar='{{false}}' 
       placeholder="{{placeholder}}" 
       focus="{{focus}}"
@@ -11,29 +14,44 @@
       adjust-position="{{adjust-position}}"
       value="{{value}}"
       bindblur='bindTextAreaBlur'
-        />
+        />	
 
-    <!-- 图 片 -->
-    <image mode='aspectFit' src="{{imagesrc}}" class="addimage" bindtap="addimage"></image>
-    <input name='img' value='{{imagesrc}}' hidden="{{true}}"></input>
-    <!-- 分 类 -->
-    <van-cell-group>
-      <van-cell
-      class='van-cell'
-      title-class=''
-      is-link
-      title="分 类"
-      link-type="navigateTo"
-      size='large'
-      icon="apps-o"
-      center='{{true}}'
-      url="moreselect/moreselect"
-      />                
-    </van-cell-group>
-    <!-- link-type='redirectTo' -->
-    <van-button  plain type="primary" wx:if="{{radiotext!=''}}">{{radiotext}}        </van-button>
-    <!-- 用来提交分类的值 是隐藏的 -->
-    <input hidden="{{true}}" name='category' value='{{radiotext}}'></input>
-    <!-- 提交按钮 bindtap="onClickRight"-->
-    <button style="margin-top:200rpx"  form-type="submit" type="primary">提交</button>
+	<!-- 图 片 -->
+	<!-- <image mode='aspectFit' src="{{imagesrc}}" class="addimage" bindtap="addimage"></image> -->
+	<!-- 实现多张图片的上传
+      文件上传完毕后会触发after-read回调函数，获取到对应的文件的临时地址，然后再使用wx.uploadFile将图片上传到远程服务器上
+     -->
+	<!-- <van-uploader 
+      accept="image"  
+      file-list="{{ fileList }}"       
+      bind:after-read="afterRead" 
+      bind:delete="delete" 
+      bind:click-preview="clickPreview"
+    /> -->
+<!-- original原画质 compressed压缩 -->
+	<van-uploader 
+   accept="image"     
+   file-list="{{ fileList }}" 
+   image-fit="aspectFit"
+   multiple
+   preview-size="230rpx"
+   max-count="3"
+   sizeType="{{sizeType}}"   
+   bind:after-read="afterRead" 
+   bind:delete="delete" 
+ />
+ <!-- preview-size -->
+
+	<!-- <input name='img' value='{{fileIds}}' hidden="{{true}}"></input> -->
+	<!-- 分 类 -->
+	<van-cell-group> 
+		<van-cell class='van-cell' title-class='' is-link title="分 类" link-type="navigateTo" size='large' icon="apps-o" center='{{true}}' url="moreselect/moreselect" />
+	</van-cell-group>
+	<!-- link-type='redirectTo' -->
+	<van-button plain type="primary" wx:if="{{radiotext!=''}}">{{radiotext}} </van-button>
+	<!-- 用来提交分类的值 是隐藏的 -->
+	<input hidden="{{true}}" name='category' value='{{radiotext}}'></input>
+	<!-- 提交按钮 bindtap="onClickRight"-->
+	<button style="margin-top:200rpx" form-type="submit" type="primary">提交</button>
 </form>
+

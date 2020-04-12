@@ -1,11 +1,11 @@
 {
   "usingComponents": {
-    "van-tab": "vant-weapp/tab",
-    "van-tabs": "vant-weapp/tabs",
-    "van-notice-bar": "vant-weapp/notice-bar",
-    "van-tag": "vant-weapp/tag",
-    "van-button": "vant-weapp/button",
-    "van-icon": "vant-weapp/icon",
-    "van-divider": "vant-weapp/divider/index"
+    "van-tab": "@vant/weapp/tab",
+    "van-tabs": "@vant/weapp/tabs",
+    "van-notice-bar": "@vant/weapp/notice-bar",
+    "van-tag": "@vant/weapp/tag",
+    "van-button": "@vant/weapp/button",
+    "van-icon": "@vant/weapp/icon",
+    "van-divider": "@vant/weapp/divider/index"
   }
 }

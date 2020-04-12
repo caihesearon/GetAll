@@ -2,7 +2,7 @@ const app = getApp()
 
 // 获取默认环境的数据库的引用：
 const db = wx.cloud.database()
-import Dialog from 'vant-weapp/dialog/dialog';
+import Dialog from '@vant/weapp/dialog/dialog';
 var util = require("../utils/common.js")
 Page({
   data: {
@@ -13,9 +13,23 @@ Page({
     myPostCount: 0, //我的提问个数
     myAnswerCount: 0, //我的回答个数
     myLovePageCount: 0, //我的收藏个数
-    myAttentionCount: 0 //我的关注个数
+    myAttentionCount: 0, //我的关注个数
+    fileList2:[],    
   },
+  afterRead(event) {
+    const { file, name } = event.detail;
+    console.log(event.detail)
+    const fileList = this.data[`fileList${name}`];
 
+    this.setData({ [`fileList${name}`]: fileList.concat(file) });
+  },
+  delete(event) {
+    console.log(event)
+    const { index, name } = event.detail;
+    const fileList = this.data[`fileList${name}`];
+    fileList.splice(index, 1);
+    this.setData({ [`fileList${name}`]: fileList });
+  },
   onLoad: function(e) {
    
   },

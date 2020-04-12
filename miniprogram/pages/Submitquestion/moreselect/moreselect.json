@@ -1,10 +1,10 @@
 {
   "usingComponents": {
-    "van-radio": "vant-weapp/radio",
-    "van-radio-group": "vant-weapp/radio-group",
-    "van-cell": "vant-weapp/cell",
-    "van-cell-group": "vant-weapp/cell-group",
-    "van-checkbox": "vant-weapp/checkbox",
-    "van-checkbox-group": "vant-weapp/checkbox-group"
+    "van-radio": "@vant/weapp/radio",
+    "van-radio-group": "@vant/weapp/radio-group",
+    "van-cell": "@vant/weapp/cell",
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-checkbox": "@vant/weapp/checkbox",
+    "van-checkbox-group": "@vant/weapp/checkbox-group"
   }
 }

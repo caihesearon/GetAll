@@ -26,6 +26,15 @@
   display: block;
   border-radius: 3%;
 }
+.mul-image{  
+  width:242rpx;
+  height: 242rpx;
+  margin-top: 10rpx;
+  margin-left: 4rpx;
+  /* display: flex; */
+  border-radius: 3%;
+}
+
 
 
 /* 小图标 */
